@@ -1,0 +1,32 @@
+{
+  "name": "Client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next",
+    "dev-start": "concurrently \"npm run dev\" \"cd ../Server && npm run run-dev\"",
+    "build": "next build",
+    "start": "next start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/client": "^3.3.16",
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
+    "graphql": "^15.5.0",
+    "next": "^10.2.0",
+    "postcss-preset-env": "^6.7.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.2.5",
+    "concurrently": "^6.0.2",
+    "postcss": "^8.2.13",
+    "tailwindcss": "^2.1.2"
+  }
+}
