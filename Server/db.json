@@ -1,0 +1,63 @@
+{
+  "speakers": [
+    {
+      "twitterHandle": "@crichardson",
+      "company": "Eventuate, Inc",
+      "id": 8590,
+      "bio": "Founder of Eventuate, Author of POJOs in Action, creator of the original Cloud Foundry",
+      "first": "Chris",
+      "last": "Richardson",
+      "reg_date": "2021-03-08T12:10:40.787",
+      "favorite": false
+    },
+    {
+      "twitterHandle": "",
+      "company": "",
+      "id": 1124,
+      "bio": "Douglas Crockford discovered the JSON Data Interchange Format. He is also the author of _JavaScript: The Good Parts_. He has been called a guru, but he is actually more of a mahatma.",
+      "first": "Douglas",
+      "last": "Crockford",
+      "reg_date": "2021-03-10T07:10:50.787",
+      "favorite": true
+    },
+    {
+      "twitterHandle": "@therockncoder",
+      "company": "Kelley Blue Book",
+      "id": 10801,
+      "bio": "An award winning developer and author.",
+      "first": "Troy",
+      "last": "Miles",
+      "reg_date": "2021-05-08T09:03:40.787",
+      "favorite": false
+    },
+    {
+      "twitterHandle": "@eveporcello",
+      "company": "Moon Highway",
+      "id": 47343,
+      "bio": "Eve Porcello is an instructor at Moon Highway, egghead.io, and LinkedIn Learning.",
+      "first": "Eve",
+      "last": "Porcello",
+      "reg_date": "2021-08-08T09:03:40.787",
+      "favorite": true
+    },
+    {
+      "first": "ABC11",
+      "last": "EF",
+      "favorite": false,
+      "reg_date": "2021-21-08T09:03:40.787",
+      "id": 47344
+    },
+    {
+      "first": "",
+      "last": "Adera",
+      "favorite": false,
+      "id": 47348
+    },
+    {
+      "first": "Youtube",
+      "last": "Hello",
+      "favorite": true,
+      "id": 47350
+    }
+  ]
+}
