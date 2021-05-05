@@ -12,20 +12,65 @@ import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import Modal from "@material-ui/core/Modal";
 
-const Toolbar = ({ insertSpeakerEvent, sortByIdDescending}) => {
-  const [modal, setModal] = useState(false);
+import { useApolloClient, useMutation } from "@apollo/client";
+import { GET_SPEAKERS } from "../graphql/queries";
+import { ADD_SPEAKERS } from "../graphql/mutations";
 
-  const toggle = () => {
-    setModal(!modal);
-  };
+const Toolbar = () => {
+  const apolloClient = useApolloClient();
+  const [modal, setModal] = useState(false);
+  const [addSpeaker] = useMutation(ADD_SPEAKERS);
 
   const [first, setFirst] = useState("");
   const [last, setLast] = useState("");
   const [favorite, setFavorite] = useState(false);
 
+  const sortByIdDescending = () => {
+    const { speakers } = apolloClient.cache.readQuery({
+      query: GET_SPEAKERS,
+    });
+    apolloClient.cache.writeQuery({
+      query: GET_SPEAKERS,
+      data: {
+        speakers: {
+          __typename: "SpeakerResults",
+          datalist: [...speakers.datalist].sort((a, b) => b.id - a.id),
+        },
+      },
+    });
+  };
+
+  const insertSpeakerEvent = (first, last, favorite) => {
+    addSpeaker({
+      variables: {
+        first,
+        last,
+        favorite,
+      },
+      update: (cache, { data: { addSpeaker } }) => {
+        const { speakers } = cache.readQuery({
+          query: GET_SPEAKERS,
+        });
+        cache.writeQuery({
+          query: GET_SPEAKERS,
+          data: {
+            speakers: {
+              __typename: "SpeakerResults",
+              datalist: [addSpeaker, ...speakers.datalist],
+            },
+          },
+        });
+      },
+    });
+  };
+
+  const toggle = () => {
+    setModal(!modal);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(first, last, favorite)
+    console.log(first, last, favorite);
     insertSpeakerEvent(first, last, favorite);
     setFirst("");
     setLast("");
@@ -40,7 +85,11 @@ const Toolbar = ({ insertSpeakerEvent, sortByIdDescending}) => {
           <Button variant="contained" color="primary" onClick={toggle}>
             <span>Insert Speaker</span>
           </Button>
-          <Button variant="contained" color="primary" onClick={sortByIdDescending}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={sortByIdDescending}
+          >
             <span>Sort Speaker</span>
           </Button>
           <Modal open={modal} onClose={toggle} className="text-center">
